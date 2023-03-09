@@ -1,7 +1,7 @@
 import * as angular from 'angular'
-import kebabCase = require('lodash.kebabcase')
 import { $injector as defaultInjector } from 'ngimport'
 import * as React from 'react'
+import { toKebabCase } from './utils/toKebabCase'
 
 interface Scope<Props> extends angular.IScope {
   props: Props
@@ -67,10 +67,10 @@ export function angular2react<Props extends object>(
       const bindings: {[key: string]: string} = {}
       if (component.bindings) {
         for (const binding in component.bindings) {
-          bindings[kebabCase(binding)] = `props.${binding}`
+          bindings[toKebabCase(binding)] = `props.${binding}`
         }
       }
-      return React.createElement(kebabCase(componentName),
+      return React.createElement(toKebabCase(componentName),
         { ...bindings, ref: this.compile.bind(this) }
       )
     }

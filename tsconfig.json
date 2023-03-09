@@ -17,10 +17,12 @@
     "pretty": true,
     "sourceMap": true,
     "strict": true,
+    "strictNullChecks": false,
     "target": "es6"
   },
   "files": [
     "index.tsx",
-    "test.tsx"
+    "test.tsx",
+    "utils/toKebabCase.ts"
   ]
 }
